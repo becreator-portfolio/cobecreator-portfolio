@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Archivo_Black, Bebas_Neue } from "next/font/google";
+import { MotionSystem } from "@/components/MotionSystem";
 import "./globals.css";
+import "./motion.css";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -38,7 +40,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR" className={`${archivo.variable} ${archivoBlack.variable} ${bebas.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <MotionSystem />
+      </body>
     </html>
   );
 }
