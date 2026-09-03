@@ -1,22 +1,43 @@
 import type { Metadata, Viewport } from "next";
+import { Archivo, Archivo_Black, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 
+const archivo = Archivo({
+  subsets: ["latin"],
+  variable: "--font-archivo",
+  display: "swap",
+});
+
+const archivoBlack = Archivo_Black({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-archivo-black",
+  display: "swap",
+});
+
+const bebas = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-bebas",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "CO.BECREATOR — AI Film Director & Creative Direction",
+  title: "Co.becreator — Direção Criativa com IA",
   description:
-    "Portfolio of AI films, creative direction, visual systems and experimental moving image by CO.BECREATOR.",
+    "Filmes e visuais para marcas, artistas e campanhas. Direção criativa, IA, imagem, movimento e edição.",
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#0a0a0a",
+  themeColor: "#060606",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR" className={`${archivo.variable} ${archivoBlack.variable} ${bebas.variable}`}>
       <body>{children}</body>
     </html>
   );
