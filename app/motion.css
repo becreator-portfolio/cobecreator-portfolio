@@ -1,0 +1,97 @@
+.motion-runtime .marqueeTrack {
+  animation: none;
+}
+
+.projectOpen,
+.experiment,
+.experiment .mediaPlaceholder,
+.positioningLoop,
+.positioningOrb {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.processStep {
+  transition: opacity 190ms ease;
+}
+
+@media (min-width: 700px) {
+  .motion-runtime .processStep {
+    opacity: .38;
+  }
+
+  .motion-runtime .processStep:first-child {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 900px) {
+  .projectCard {
+    position: sticky;
+    top: 86px;
+  }
+
+  .projectCard:nth-child(1) {
+    z-index: 1;
+  }
+
+  .projectCard:nth-child(2) {
+    z-index: 2;
+  }
+
+  .projectCard:nth-child(3) {
+    z-index: 3;
+  }
+
+  .projectOpen {
+    transform-origin: 50% 0%;
+    will-change: transform, opacity, filter;
+  }
+
+  .projectCaption h3,
+  .projectCaption p,
+  .watchLabel {
+    will-change: opacity;
+  }
+
+  .experiment,
+  .positioningOrb,
+  .positioningLoop {
+    will-change: transform;
+  }
+
+  .experiment .mediaPlaceholder {
+    will-change: transform, opacity, clip-path;
+  }
+}
+
+html[data-motion-paused="true"] .projectOpen,
+html[data-motion-paused="true"] .experiment,
+html[data-motion-paused="true"] .positioningLoop,
+html[data-motion-paused="true"] .positioningOrb {
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projectCard {
+    position: relative;
+    top: auto;
+  }
+
+  .projectOpen,
+  .experiment,
+  .positioningLoop,
+  .positioningOrb {
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+
+  .projectCaption h3,
+  .projectCaption p,
+  .watchLabel,
+  .experiment .mediaPlaceholder,
+  .processStep {
+    opacity: 1 !important;
+  }
+}
