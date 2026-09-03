@@ -37,5 +37,26 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Audit media handoff
+        shell: bash
+        run: |
+          missing=0
+          for asset in \
+            hero.mp4 \
+            hero-poster.jpg \
+            block-office.mp4 \
+            block-office-poster.jpg \
+            nos-contra-o-mundo.mp4 \
+            nos-contra-o-mundo-poster.jpg \
+            peso-da-historia.mp4 \
+            peso-da-historia-poster.jpg
+          do
+            if [ ! -f "public/media/$asset" ]; then
+              echo "::warning file=public/media/$asset::Missing production media asset"
+              missing=$((missing + 1))
+            fi
+          done
+          echo "Missing media assets: $missing"
+
       - name: Build
         run: npm run build
