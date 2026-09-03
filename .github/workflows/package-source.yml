@@ -7,16 +7,21 @@ on:
     paths:
       - '.github/workflows/package-source.yml'
 
+permissions:
+  contents: read
+
 jobs:
   package:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Package source
         run: |
-          zip -r source.zip app components data public package.json tsconfig.json next.config.ts next-env.d.ts .gitignore
+          zip -r source.zip app components data public package.json package-lock.json tsconfig.json next.config.ts next-env.d.ts .gitignore
 
       - name: Upload source artifact
         uses: actions/upload-artifact@v4
