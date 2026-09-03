@@ -2,39 +2,46 @@ export type Project = {
   slug: string;
   index: string;
   title: string;
-  discipline: string;
+  displayTitle: string;
+  meta: string;
   year: string;
-  description: string;
-  video?: string;
+  video: string;
   poster?: string;
+  objectPosition?: string;
 };
 
 export const projects: Project[] = [
   {
-    slug: "synthetic-memory",
+    slug: "block-office",
     index: "01",
-    title: "Synthetic Memory",
-    discipline: "AI Film / Direction",
+    title: "Block Office",
+    displayTitle: "BLOCK OFFICE / FILME DE MODA",
+    meta: "MODA · FILME · 2026",
     year: "2026",
-    description: "A study in unreliable memory, low-resolution image culture and physically imperfect synthetic cinema.",
-    video: "/media/synthetic-memory.mp4",
+    video: "/media/block-office.mp4",
+    poster: "/media/block-office-poster.jpg",
+    objectPosition: "50% 50%",
   },
   {
-    slug: "street-luxury",
+    slug: "nos-contra-o-mundo",
     index: "02",
-    title: "Street Luxury",
-    discipline: "Fashion Film / Visual Direction",
+    title: "Nós Contra o Mundo",
+    displayTitle: "ALBUM NÓS CONTRA O MUNDO / RIRI & SLIME CUNHA",
+    meta: "VISUALIZER · 2026",
     year: "2026",
-    description: "Underground fashion language colliding with ordinary spaces, direct flash and absurd objects treated as routine.",
-    video: "/media/street-luxury.mp4",
+    video: "/media/nos-contra-o-mundo.mp4",
+    poster: "/media/nos-contra-o-mundo-poster.jpg",
+    objectPosition: "50% 50%",
   },
   {
-    slug: "after-hours",
+    slug: "peso-da-historia",
     index: "03",
-    title: "After Hours",
-    discipline: "Creative Direction / Moving Image",
+    title: "Peso da História",
+    displayTitle: "PESO DA HISTÓRIA / CANAL LAERTE VIANA NA ÁREA - MMA",
+    meta: "EDIÇÃO DE VIDEO · STORYTELLING · 2026",
     year: "2026",
-    description: "Nightlife fragments built around intrusive framing, CCD texture, hard specular light and accidental composition.",
-    video: "/media/after-hours.mp4",
+    video: "/media/peso-da-historia.mp4",
+    poster: "/media/peso-da-historia-poster.jpg",
+    objectPosition: "50% 50%",
   },
 ];
