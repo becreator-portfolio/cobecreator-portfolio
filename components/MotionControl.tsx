@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 
 const STORAGE_KEY = "cobecreator:motion-paused";
 const MOTION_EVENT = "cobecreator:motion";
@@ -10,25 +10,35 @@ function applyMotionState(paused: boolean) {
   window.dispatchEvent(new CustomEvent(MOTION_EVENT, { detail: { paused } }));
 }
 
+function subscribeToMotion(onStoreChange: () => void) {
+  window.addEventListener(MOTION_EVENT, onStoreChange);
+  return () => window.removeEventListener(MOTION_EVENT, onStoreChange);
+}
+
+function getMotionSnapshot() {
+  return sessionStorage.getItem(STORAGE_KEY) === "true";
+}
+
+function getServerMotionSnapshot() {
+  return false;
+}
+
 export function MotionControl() {
-  const [paused, setPaused] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const paused = useSyncExternalStore(
+    subscribeToMotion,
+    getMotionSnapshot,
+    getServerMotionSnapshot,
+  );
 
   useEffect(() => {
-    const stored = sessionStorage.getItem(STORAGE_KEY) === "true";
-    setPaused(stored);
-    applyMotionState(stored);
-    setMounted(true);
-  }, []);
+    applyMotionState(paused);
+  }, [paused]);
 
   const toggleMotion = () => {
     const next = !paused;
-    setPaused(next);
     sessionStorage.setItem(STORAGE_KEY, String(next));
     applyMotionState(next);
   };
-
-  if (!mounted) return null;
 
   return (
     <button
