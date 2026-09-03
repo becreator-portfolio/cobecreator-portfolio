@@ -1,0 +1,26 @@
+name: Package Source
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/package-source.yml'
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Package source
+        run: |
+          zip -r source.zip app components data public package.json tsconfig.json next.config.ts next-env.d.ts .gitignore
+
+      - name: Upload source artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cobecreator-source
+          path: source.zip
+          if-no-files-found: error
