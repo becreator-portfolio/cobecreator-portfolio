@@ -97,7 +97,7 @@ export function ManagedVideo({
       loop
       playsInline
       preload={shouldLoad ? "metadata" : "none"}
-      style={{ objectPosition }}
+      style={{ objectPosition, opacity: variant === "hero" ? 1 : undefined }}
       onLoadedData={() => setReady(true)}
       onError={() => setHasError(true)}
     />
