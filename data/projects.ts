@@ -5,7 +5,7 @@ export type Project = {
   displayTitle: string;
   meta: string;
   year: string;
-  video: string;
+  video?: string;
   poster?: string;
   objectPosition?: string;
 };
@@ -40,8 +40,5 @@ export const projects: Project[] = [
     displayTitle: "PESO DA HISTÓRIA / CANAL LAERTE VIANA NA ÁREA - MMA",
     meta: "EDIÇÃO DE VIDEO · STORYTELLING · 2026",
     year: "2026",
-    video: "/media/peso-da-historia.mp4",
-    poster: "/media/peso-da-historia-poster.jpg",
-    objectPosition: "50% 50%",
   },
 ];
