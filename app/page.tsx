@@ -70,7 +70,7 @@ export default function HomePage() {
       <section className="work" id="work" aria-labelledby="work-title">
         <div className="sectionShell workIntro">
           <p className="sectionLabel sectionLabelDark">02 / PORTFÓLIO</p>
-          <h2 className="workTitle" id="work-title">TRABALHOS SELECIONADOS</h2>
+          <h2 className="workTitle" id="work-title">PROJETOS SELECIONADOS</h2>
         </div>
         <ProjectGallery />
       </section>
@@ -105,7 +105,13 @@ export default function HomePage() {
 
         <div className="processTop">
           <h2 className="processTitle" id="process-title">DA IDEIA<br />AO FILME PRONTO.</h2>
-          <div className="processVisual mediaPlaceholder" role="img" aria-label="Espaço reservado para o storyboard do processo" />
+          <ManagedVideo
+            src="/media/grandmas.mp4"
+            poster="/media/grandmas-poster.jpg"
+            className="processVisual mediaPlaceholder sectionVideo"
+            variant="portfolio"
+            objectPosition="50% 18%"
+          />
         </div>
 
         <div className="processRail" aria-hidden="true"><span /></div>
@@ -125,19 +131,43 @@ export default function HomePage() {
 
         <div className="experimentCanvas">
           <figure className="experiment experimentA">
-            <div className="mediaPlaceholder" />
+            <ManagedVideo
+              src="/media/grandmas.mp4"
+              poster="/media/grandmas-poster.jpg"
+              className="mediaPlaceholder experimentVideo"
+              variant="portfolio"
+              objectPosition="50% 30%"
+            />
             <figcaption>AI FILM CREATOR</figcaption>
           </figure>
           <figure className="experiment experimentB">
-            <div className="mediaPlaceholder" />
+            <ManagedVideo
+              src="/media/experiment-lv.mp4"
+              poster="/media/experiment-lv-poster.jpg"
+              className="mediaPlaceholder experimentVideo"
+              variant="portfolio"
+              objectPosition="50% 50%"
+            />
             <figcaption>COMERCIAL / LV AGÊNCIA</figcaption>
           </figure>
           <figure className="experiment experimentC">
-            <div className="mediaPlaceholder" />
+            <ManagedVideo
+              src="/media/experiment-product.mp4"
+              poster="/media/experiment-product-poster.jpg"
+              className="mediaPlaceholder experimentVideo"
+              variant="portfolio"
+              objectPosition="50% 50%"
+            />
             <figcaption>PUBLI DE PRODUTO / ESTUDO DE MATERIAL</figcaption>
           </figure>
           <figure className="experiment experimentD">
-            <div className="mediaPlaceholder" />
+            <ManagedVideo
+              src="/media/experiment-eduardo.mp4"
+              poster="/media/experiment-eduardo-poster.jpg"
+              className="mediaPlaceholder experimentVideo"
+              variant="portfolio"
+              objectPosition="50% 50%"
+            />
             <figcaption>DESIGN DE INTERIORES / EDUARDO CIDADE</figcaption>
           </figure>
         </div>
@@ -154,9 +184,15 @@ export default function HomePage() {
           </div>
 
           <div className="positioningMedia" aria-hidden="true">
-            <div className="positioningOrb positioningOrbA mediaPlaceholder" />
-            <div className="positioningOrb positioningOrbB mediaPlaceholder" />
-            <div className="positioningLoop mediaPlaceholder" />
+            <img className="positioningOrb positioningOrbA" src="/media/positioning-orb-a.jpg" alt="" />
+            <img className="positioningOrb positioningOrbB" src="/media/positioning-orb-b.jpg" alt="" />
+            <ManagedVideo
+              src="/media/positioning.mp4"
+              poster="/media/positioning-poster.jpg"
+              className="positioningLoop mediaPlaceholder sectionVideo"
+              variant="portfolio"
+              objectPosition="50% 50%"
+            />
           </div>
         </div>
       </section>
@@ -169,7 +205,7 @@ export default function HomePage() {
           <p>Me conta a ideia. A gente define o próximo passo.</p>
         </div>
 
-        <div className="contactActions" aria-label="Canais de contato em preparação">
+        <div className="contactActions" aria-label="Canais de contato aguardando URLs finais">
           <button className="contactButton contactButtonPrimary" type="button" disabled title="Integração de orçamento pendente">
             PEDIR ORÇAMENTO ↗
           </button>
@@ -181,7 +217,7 @@ export default function HomePage() {
           </button>
         </div>
 
-        <div className="contactLinks" aria-label="Links de contato pendentes">
+        <div className="contactLinks" aria-label="Links de contato aguardando URLs finais">
           <span>WHATSAPP</span>
           <span>INSTAGRAM</span>
           <span>E-MAIL</span>
