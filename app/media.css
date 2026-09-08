@@ -1,0 +1,90 @@
+.sectionVideo,
+.experimentVideo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.processVisual.sectionVideo,
+.positioningLoop.sectionVideo {
+  object-fit: cover;
+}
+
+.experiment .experimentVideo {
+  position: relative;
+  inset: auto;
+}
+
+.positioningOrb {
+  display: block;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #111;
+}
+
+.projectOpen:disabled {
+  opacity: 1;
+}
+
+.projectUnavailable {
+  cursor: default;
+}
+
+.projectMediaPending {
+  background: #0b0b09;
+}
+
+.projectStaticFallback {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.pesoStaticFallback {
+  background:
+    radial-gradient(ellipse at 52% 51%, rgba(255, 220, 67, .38), transparent 19%),
+    linear-gradient(112deg, rgba(255, 211, 47, .08), transparent 34%),
+    linear-gradient(155deg, #0c0c08 0%, #241f08 46%, #080806 100%);
+  filter: saturate(.72) contrast(1.08);
+}
+
+.pesoStaticFallback::before {
+  content: "";
+  position: absolute;
+  left: 26%;
+  top: 32%;
+  width: 48%;
+  height: 34%;
+  border: 1px solid rgba(231, 196, 57, .42);
+  border-radius: 5px;
+  box-shadow:
+    0 0 34px rgba(255, 211, 47, .12),
+    inset 0 0 42px rgba(255, 211, 47, .06);
+  transform: perspective(700px) rotateX(58deg) rotateZ(-4deg);
+}
+
+.pesoStaticFallback::after {
+  content: "";
+  position: absolute;
+  left: 32%;
+  top: 49%;
+  width: 36%;
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(255, 224, 95, .82);
+  box-shadow: 0 0 24px rgba(255, 216, 47, .58);
+  transform: rotate(-3deg);
+}
+
+.projectUnavailable .watchIntent,
+.projectUnavailable .watchLabel {
+  color: var(--muted);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .projectUnavailable:hover .projectStaticFallback {
+    filter: saturate(.72) contrast(1.08);
+  }
+}
