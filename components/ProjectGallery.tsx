@@ -29,7 +29,13 @@ export function ProjectGallery() {
   const showNext = () => {
     setActiveIndex((current) => {
       if (current === null) return 0;
-      return (current + 1) % projects.length;
+
+      for (let offset = 1; offset <= projects.length; offset += 1) {
+        const next = (current + offset) % projects.length;
+        if (projects[next]?.video) return next;
+      }
+
+      return current;
     });
   };
 
@@ -38,35 +44,46 @@ export function ProjectGallery() {
   return (
     <>
       <div className="projectStack">
-        {projects.map((project, index) => (
-          <article className="projectCard" key={project.slug}>
-            <span className="projectNumber">{project.index}</span>
-            <button
-              type="button"
-              className="projectOpen"
-              onClick={() => setActiveIndex(index)}
-              aria-label={`Assistir ${project.title}`}
-            >
-              <div className="projectMedia">
-                <ManagedVideo
-                  src={project.video}
-                  poster={project.poster}
-                  objectPosition={project.objectPosition}
-                  className="projectVideo"
-                  variant="portfolio"
-                />
-                <span className="watchIntent">ASSISTIR ↗</span>
-              </div>
-              <div className="projectCaption">
-                <div>
-                  <h3>{project.displayTitle}</h3>
-                  <p>{project.meta}</p>
+        {projects.map((project, index) => {
+          const available = Boolean(project.video);
+
+          return (
+            <article className="projectCard" key={project.slug}>
+              <span className="projectNumber">{project.index}</span>
+              <button
+                type="button"
+                className={`projectOpen${available ? "" : " projectUnavailable"}`}
+                onClick={() => available && setActiveIndex(index)}
+                aria-label={available ? `Assistir ${project.title}` : `${project.title} — mídia final pendente`}
+                disabled={!available}
+              >
+                <div className={`projectMedia${available ? "" : " projectMediaPending"}`}>
+                  {project.video ? (
+                    <ManagedVideo
+                      src={project.video}
+                      poster={project.poster}
+                      objectPosition={project.objectPosition}
+                      className="projectVideo"
+                      variant="portfolio"
+                    />
+                  ) : (
+                    <div className="projectStaticFallback pesoStaticFallback" aria-hidden="true">
+                      <span />
+                    </div>
+                  )}
+                  <span className="watchIntent">{available ? "ASSISTIR ↗" : "MÍDIA PENDENTE"}</span>
                 </div>
-                <span className="watchLabel">ASSISTIR ↗</span>
-              </div>
-            </button>
-          </article>
-        ))}
+                <div className="projectCaption">
+                  <div>
+                    <h3>{project.displayTitle}</h3>
+                    <p>{project.meta}</p>
+                  </div>
+                  <span className="watchLabel">{available ? "ASSISTIR ↗" : "MÍDIA PENDENTE"}</span>
+                </div>
+              </button>
+            </article>
+          );
+        })}
       </div>
 
       <dialog
@@ -78,7 +95,7 @@ export function ProjectGallery() {
         }}
         onClose={() => setActiveIndex(null)}
       >
-        {activeProject && (
+        {activeProject?.video && (
           <div className="projectView">
             <button type="button" className="projectClose" onClick={closeProject}>
               VOLTAR ×
