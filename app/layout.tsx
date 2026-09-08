@@ -3,6 +3,7 @@ import { Archivo, Archivo_Black, Bebas_Neue } from "next/font/google";
 import { MotionSystem } from "@/components/MotionSystem";
 import "./globals.css";
 import "./motion.css";
+import "./media.css";
 
 const archivo = Archivo({
   subsets: ["latin"],
